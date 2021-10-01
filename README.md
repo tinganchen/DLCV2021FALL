@@ -1,6 +1,6 @@
 # DLCV2021FALL
 
-### hw0. Face recognition with PCA
+### [hw0. Face recognition with PCA](./hw0)
 
 1. Mean face & eigenfaces
 2. Project onto the eigenspace and reconstruct the images
