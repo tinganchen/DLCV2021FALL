@@ -1,0 +1,28 @@
+2021-10-18-23:24:20
+
+gpus: [0]
+pretrain_data_dir: /home/ta/Documents/110-1/dlcv/hw1-tinganchen/p1/data/
+train_dataset: /home/ta/Documents/110-1/dlcv/hw1-tinganchen/p1/../../hw1_data/p1_data/train_50
+test_dataset: /home/ta/Documents/110-1/dlcv/hw1_data/p1_data/val_50
+test_only: True
+ground_truth: False
+tsne: False
+model: resnet_110
+job_dir: experiment/resnet_110/output_test_1/
+output_file: /home/ta/Documents/110-1/dlcv/hw1-tinganchen/p1/result.csv
+pretrained: True
+pretrain_dir: 
+pretrain_file: best_model/model_best.pt
+reset: False
+resume: None
+refine: None
+num_classes: 50
+num_epochs: 10
+train_batch_size: 128
+eval_batch_size: 100
+momentum: 0.9
+lr: 0.01
+lr_decay_step: 30
+weight_decay: 0.0002
+print_freq: 100
+
