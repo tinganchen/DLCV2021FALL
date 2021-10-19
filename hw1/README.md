@@ -109,7 +109,9 @@ The evaluation in hw1/p2/utils/common.py considers all classes.
 ### Visualization
 To visualization the ground truth or predicted semantic segmentation map in an image, you can run the provided visualization script provided in the starter code by using the following command.
 
-    python3 viz_mask.py <--img_path xxxx_sat.jpg> <--seg_path xxxx_mask.png>
+```shell
+python3 viz_mask.py --img_path <xxxx_sat.jpg> --seg_path <xxxx_mask.png>
+```
 
 # Results
 
