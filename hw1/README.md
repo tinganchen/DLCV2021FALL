@@ -32,7 +32,9 @@ or
 
 Training & validating the (pretrained) ResNet-110 on hw1_data/p1_data
 
+```shell
     python3 main.py --train_dataset `<your_data_path>`/hw1_data/p1_data/train_50 --test_dataset <your_data_path>/hw1_data/p1_data/val_50 --tsne False --model resnet_110 --job_dir experiment/resnet_110/output/ --output_file result.csv --pretrained True --pretrain_dir pretrain/ --pretrain_file resnet110_cifar100/model_best.pt --num_classes 50 --num_epochs 10 --train_batch_size 128 --lr 0.01 --weight_decay 0.0002
+```
 
 ## Problem 2 ― Semantic Segmentation
 
