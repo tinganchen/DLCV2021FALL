@@ -115,4 +115,4 @@ python3 viz_mask.py --img_path <xxxx_sat.jpg> --seg_path <xxxx_mask.png>
 
 # Results
 
-Please check the [report](./hw1_d09921014.pdf)
+Please refer to the [report](./hw1_d09921014.pdf)
