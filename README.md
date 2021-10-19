@@ -8,6 +8,7 @@ Deep Learning for Computer Vision
 3. Reconstruction error in MSE
 4. 3-fold cross-validation + KNN for testing
 5. Recognition rate
+6. [Result](./hw0/report.pdf)
 
 ### [hw1. i. Image classification & ii. Segmentation](./hw1)
 
@@ -23,5 +24,6 @@ ii. Image segmentation on satellite map
   2. Multi-class problem (One dimension per pixel)
   3. Cross entropy loss 2D + Dice loss
   4. mIOU
+  5. [Result](./hw1/hw1_d09921014.pdf)
  
 
