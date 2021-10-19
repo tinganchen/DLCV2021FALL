@@ -20,7 +20,7 @@ or
 Pretraining ResNet-110 on CIFAR-100
 
 1. Self-pretrain
-    python3 pretrain.py --job dir <your_job_path> --num_classes 100 --num_epochs 100 --train_batch_size 128 --eval_batch_size 100 --momentum 0.9 --lr 0.05 --lr_decay_step 30 --weight_decay 0.0002 --print_freq 100
+    python3 pretrain.py --job dir $your_job_path$ --num_classes 100 --num_epochs 100 --train_batch_size 128 --eval_batch_size 100 --momentum 0.9 --lr 0.05 --lr_decay_step 30 --weight_decay 0.0002 --print_freq 100
 2. Check the best model under <your_job_path>/checkpoint
 
 or
