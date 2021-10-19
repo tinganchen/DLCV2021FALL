@@ -1,3 +1,5 @@
+CURRENT_PATH=$(pwd)
+
 # change work space
 cd ./p2
 
@@ -16,7 +18,7 @@ wget https://www.dropbox.com/s/sb4jbd99xwj4fny/model_best.pt
 mv model_best.pt pretrain/resnet110_cifar100/model_best.pt
 
 # inference
-python3 inference.py --test_dataset $1 --output_dir $2 --test_only True --pretrained True
+python3 inference.py --bash_path $CURRENT_PATH --test_dataset $1 --output_dir $2 --test_only True --pretrained True
 
 cd ..
 

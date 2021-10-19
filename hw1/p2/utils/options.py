@@ -13,6 +13,7 @@ MODEL = 'fcn_resnet50' # fcn_resnet50
 # VGG_FCN32
 
 ## Warm-up 
+parser.add_argument('--bash_path', type = str, default = os.getcwd(), help = 'The directory where the summaries will be stored.') # 'experiments/'
 parser.add_argument('--gpus', type = int, nargs = '+', default = [0], help = 'Select gpu to use')
 
 parser.add_argument('--pretrain_data_dir', type = str, default = os.getcwd() + '/data/', help = 'The directory where the input data is stored.')
@@ -74,3 +75,8 @@ if args.resume is not None and not os.path.isfile(args.resume):
 if args.refine is not None and not os.path.isfile(args.refine):
     raise ValueError('No checkpoint found at {} to refine'.format(args.refine))
 
+args.test_dataset = os.path.join(args.bash_path, args.test_dataset)
+args.output_dir = os.path.join(args.bash_path, args.output_dir)
+
+if args.ground_truth_dir:
+    args.ground_truth_dir = os.path.join(args.bash_path, args.ground_truth_dir)
