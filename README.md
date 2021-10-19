@@ -21,7 +21,7 @@ i. Image classification
 ii. Image segmentation on satellite map
   1. CNN + FCN [VGG-16+FCN32, ResNet-50+FCN]
   2. Multi-class problem (One dimension per pixel)
-  3. Cross entropy loss + Dice loss
+  3. Cross entropy loss 2D + Dice loss
   4. mIOU
  
 
