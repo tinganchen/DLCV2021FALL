@@ -10,6 +10,10 @@ or
 2. Unzip hw1_data.zip as hw1_data/
 3. Add to <your_data_path> 
 
+# Requirements
+
+
+
 # Training
 
 ## Problem 1 ― Image Classification
@@ -20,21 +24,45 @@ or
 Pretraining ResNet-110 on CIFAR-100
 
 1. Self-pretrain
-    python3 pretrain.py --job dir <your_job_path> --num_classes 100 --num_epochs 100 --train_batch_size 128 --eval_batch_size 100 --momentum 0.9 --lr 0.05 --lr_decay_step 30 --weight_decay 0.0002 --print_freq 100
-2. Check the best model under <your_job_path>/checkpoint
 
+```shell
+python3 pretrain.py --job dir <your_job_path> --num_classes 100 --num_epochs 100 --train_batch_size 128 --eval_batch_size 100 --momentum 0.9 --lr 0.05 --lr_decay_step 30 --weight_decay 0.0002 --print_freq 100
+2. Check the best model under <your_job_path>/checkpoint
+```
 or
 
-1. Download from the [model_best.pt](https://drive.google.com/file/d/1Mtz2hvfDawPHLCtV0xWiTt4zbSlYmJqt/view?usp=sharing) 
+1. Download pretrained model [model_best.pt](https://drive.google.com/file/d/1Mtz2hvfDawPHLCtV0xWiTt4zbSlYmJqt/view?usp=sharing) 
 2. Add to hw1/pretrain/resnet110_cifar100/ 
 
 ### Train & Validation
 
 Training & validating the (pretrained) ResNet-110 on hw1_data/p1_data
 
+1.
 ```shell
-python3 main.py --train_dataset <your_data_path>/hw1_data/p1_data/train_50 --test_dataset <your_data_path>/hw1_data/p1_data/val_50 --tsne False --model resnet_110 --job_dir experiment/resnet_110/output/ --output_file result.csv --pretrained True --pretrain_dir pretrain/ --pretrain_file resnet110_cifar100/model_best.pt --num_classes 50 --num_epochs 10 --train_batch_size 128 --lr 0.01 --weight_decay 0.0002
+python3 main.py --train_dataset <your_data_path>/hw1_data/p1_data/train_50 --test_dataset <your_data_path>/hw1_data/p1_data/val_50 --tsne False --model resnet_110 --job_dir <your_job_path> --output_file result.csv --pretrained True --pretrain_dir pretrain/ --pretrain_file resnet110_cifar100/model_best.pt --num_classes 50 --num_epochs 10 --train_batch_size 128 --lr 0.01 --weight_decay 0.0002
 ```
+2. Check trained model model_best.pt under <your_job_path>/checkpoint
+
+3. Copy model_best.pt under hw1/p1/best_model/
+
+### Inference
+
+Doing inference under hw1/
+
+```shell
+bash hw1_1.sh <test_dataset_dir> <output_csv>
+```
+
+Output csv will be in two columns with column names ["image_id", "label"]
+
+### Evaluation
+
+```shell
+python3 evaluate.py -p <output_csv> -g <ground_truth_csv>
+```
+
+The ground truth csv should be in the same format as <output_csv>, e.g. hw1_data/p1_data/val_gt.csv
 
 ## Problem 2 ― Semantic Segmentation
 
