@@ -59,7 +59,7 @@ Doing inference under hw1/
 bash hw1_1.sh <test_dataset_dir> <output_csv>
 ```
 
-Output csv will be in two columns with column names ["image_id", "label"]
+The output csv will be in two columns with column names ["image_id", "label"]
 
 ### Evaluation
 
