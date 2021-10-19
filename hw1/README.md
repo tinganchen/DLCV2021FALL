@@ -6,21 +6,33 @@
     bash ./get_dataset.sh
 
 or 
-1. download from the [link](https://drive.google.com/file/d/1LS4V8r1iBjP6OwqpzLLxXUUB7IvSJ-uh/view?usp=sharing) 
-2. unzip hw1_data.zip as hw1_data/
-3. add to <your_data_path> 
+1. Download from the [link](https://drive.google.com/file/d/1LS4V8r1iBjP6OwqpzLLxXUUB7IvSJ-uh/view?usp=sharing) 
+2. Unzip hw1_data.zip as hw1_data/
+3. Add to <your_data_path> 
 
 # Training
 
 ## Problem 1 ― Image Classification
     cd p1/
 
-### Pretrained model 
+### Pretraining 
 
 Pretraining ResNet-110 on CIFAR-100
 
-    python3 pretrain.py --num_classes 100 --num_epochs 100 --train_batch_size 128 --eval_batch_size 100 --momentum 0.9 --lr 0.05 --lr_decay_step 30 --weight_decay 0.0002 --print_freq 100
+1. Self-pretrain
+    python3 pretrain.py --job dir <your_job_path> --num_classes 100 --num_epochs 100 --train_batch_size 128 --eval_batch_size 100 --momentum 0.9 --lr 0.05 --lr_decay_step 30 --weight_decay 0.0002 --print_freq 100
+2. Check the best model under <your_job_path>/checkpoint
 
+or
+
+1. Download from the [model_best.pt](https://drive.google.com/file/d/1Mtz2hvfDawPHLCtV0xWiTt4zbSlYmJqt/view?usp=sharing) 
+2. Add to hw1/pretrain/resnet110_cifar100/ 
+
+### Train & Validation
+
+Training & validating the (pretrained) ResNet-110 on hw1_data/p1_data
+
+    python3 main.py --train_dataset <your_data_path>/hw1_data/p1_data/train_50 --test_dataset <your_data_path>/hw1_data/p1_data/val_50 --tsne False --model resnet_110 --job_dir experiment/resnet_110/output/ --output_file result.csv --pretrained True --pretrain_dir pretrain/ --pretrain_file resnet110_cifar100/model_best.pt --num_classes 50 --num_epochs 10 --train_batch_size 128 --lr 0.01 --weight_decay 0.0002
 
 ## Problem 2 ― Semantic Segmentation
 
