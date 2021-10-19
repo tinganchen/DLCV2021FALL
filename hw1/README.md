@@ -1,17 +1,11 @@
+# Introduction
 
-# HW1 Problem 1― Image Classification
-In HW1 problem 1, you will need to implement an image classification model and answer some questions in the report.
+## Problem 1 ― Image Classification
 
-# HW1 Problem 2― Semantic Segmentation
-In HW1 problem 2, you will need to implement two semantic segmentation models and answer some questions in the report.
+## Problem 2 ― Semantic Segmentation
 
-For more details, please click [this link](https://docs.google.com/presentation/d/1H4O5NrEK-AzS2jRggWSpzs9hHEsYlCNYQdJbHlDfH48/edit?usp=sharing) to view the slides of HW1
-
-# Usage
-To start working on this assignment, you should clone this repository into your local machine by using the following command.
-
+## Usage
     git clone https://github.com/DLCV-Fall-2021/hw1-<username>.git
-Note that you should replace `<username>` with your own GitHub username.
 
 ### Dataset
 In the starter code of this repository, we have provided a shell script for downloading and extracting the dataset for this assignment. For Linux users, simply use the following command.
