@@ -44,6 +44,7 @@ Training & validating the (pretrained) ResNet-110 on hw1_data/p1_data
 ```shell
 python3 main.py --train_dataset <your_data_path>/hw1_data/p1_data/train_50 --test_dataset <your_data_path>/hw1_data/p1_data/val_50 --tsne False --model resnet_110 --job_dir <your_job_path> --output_file <output_csv> --pretrained True --pretrain_dir pretrain/ --pretrain_file resnet110_cifar100/model_best.pt --num_classes 50 --num_epochs 10 --train_batch_size 128 --lr 0.01 --weight_decay 0.0002
 ```
+
 2. Check trained model *model_best.pt* under <your_job_path>/checkpoint or Download our trained model [here](https://drive.google.com/file/d/1o16upMUqmz4kbnOwZCEbo5iyjAjjHAVV/view?usp=sharing)
 
 3. Copy *model_best.pt* under hw1/p1/best_model/
