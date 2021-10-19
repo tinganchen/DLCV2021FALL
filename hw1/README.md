@@ -1,19 +1,28 @@
-# Introduction
-
-### Problem 1 ― Image Classification
-
-### Problem 2 ― Semantic Segmentation
-
 ### Usage
     git clone https://github.com/tinganchen/DLCV2021FALL.git
     cd hw1/
 
 ### Dataset
     bash ./get_dataset.sh
-or download from the [link](https://drive.google.com/file/d/1LS4V8r1iBjP6OwqpzLLxXUUB7IvSJ-uh/view?usp=sharing)
 
-> ⚠️ ***IMPORTANT NOTE*** ⚠️  
-> You should keep a copy of the dataset only in your local machine. **DO NOT** upload the dataset to this remote repository. If you extract the dataset manually, be sure to put them in a folder called `hw1_data` under the root directory of your local repository so that it will be included in the default `.gitignore` file.
+or 
+1. download from the [link](https://drive.google.com/file/d/1LS4V8r1iBjP6OwqpzLLxXUUB7IvSJ-uh/view?usp=sharing) 
+2. unzip hw1_data.zip as hw1_data/
+3. add to <your_data_path> 
+
+### Training
+
+#### Problem 1 ― Image Classification
+    cd p1/
+
+##### Pretrained model 
+
+Pretraining ResNet-110 on CIFAR-100
+
+    python3 pretrain.py --num_classes 100 --num_epochs 100 --train_batch_size 128 --eval_batch_size 100 --momentum 0.9 --lr 0.05 --lr_decay_step 30 --weight_decay 0.0002 --print_freq 100
+
+
+#### Problem 2 ― Semantic Segmentation
 
 ### Evaluation
 To evaluate your semantic segmentation model, you can run the provided evaluation script provided in the starter code by using the following command.
