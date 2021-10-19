@@ -73,8 +73,6 @@ The ground truth csv should be in the same format as <output_csv>, e.g. hw1_data
 
 Training & validating the ResNet-50+FCN (VGG-16+FCN32) on hw1_data/p2_data (pretrained model from *torchvision*)
 
-0. 
-
 1.
 ```shell
 python3 main.py --train_dataset <your_data_path>/hw1_data/p2_data/train --test_dataset <your_data_path>/hw1_data/p2_data/validation --model fcn_resnet50 --job_dir <your_job_path> --output_dir result.csv --pretrained True --num_classes 7 --num_epochs 10 --train_batch_size 8 --lr 0.005 --lr_decay_step 5 --weight_decay 0.0002
@@ -91,7 +89,9 @@ Doing inference under hw1/
 bash hw1_2.sh <test_dataset_dir> <output_segmented_image_dir>
 ```
 
-### Evaluation
+The mIOU can be evaluated during inference time only unmarked the comments in Line 12 and Line 104-108.
+
+### mIOU Evaluation
 
 ```shell
 python3 mean_iou_evaluate.py -p <output_segmented_image_dir> -g <ground_truth_image_dir>
