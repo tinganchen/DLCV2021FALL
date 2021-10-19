@@ -29,8 +29,10 @@ Pretraining ResNet-110 on CIFAR-100
 
 ```shell
 python3 pretrain.py --job dir <your_job_path> --num_classes 100 --num_epochs 100 --train_batch_size 128 --eval_batch_size 100 --momentum 0.9 --lr 0.05 --lr_decay_step 30 --weight_decay 0.0002 --print_freq 100
-2. Check the best model under <your_job_path>/checkpoint
 ```
+
+2. Check the best model under <your_job_path>/checkpoint
+
 or
 
 1. Download pretrained model [model_best.pt](https://drive.google.com/file/d/1Mtz2hvfDawPHLCtV0xWiTt4zbSlYmJqt/view?usp=sharing) 
