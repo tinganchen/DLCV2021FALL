@@ -99,11 +99,47 @@ To visualization the generated digit data.
 python3 visualization.py --data_path <your_data_path>/hw2_data/digits/mnistm/train --output_test_data_path <generated_test_data_path> --pretrained True --source_dir best_model/ --source_file model_best.pt 
 ```
 
-[TODO]
+### TODO
 Our ACGAN can generate digit images that the [classifier](./p2/digit_classifier.py) can discriminate the digits.
 However, the image style is hardly similar to the original data. 
 We consider that it may be the pretrained discriminator has strong discrimination performance.
 We will try to use discriminator without being pretrained.
+
+
+## Problem 3 ― Unsupervised Domain Adaptation (DANN)
+    cd p3/
+
+
+### Train & Validation
+
+Training & validating DANN on hw2_data/p2_data/digits/mnistm, svhn, usps
+
+There are three tasks for <SRC>-><TGT> (using source data to predict target data)
+
+Evaluate by classifier *Classifier.pth* downloaded [here](https://drive.google.com/file/d/1BDeP24VQJZuNdoAEtvxpnJnxpAShLxpt/view?usp=sharing)
+
+1.
+```shell
+python3 main.py --data_path <your_data_path>/hw2_data/digits/mnistm/train --label_path <your_data_path>/hw2_data/digits/mnistm/train.csv --output_test_data_path <generated_test_data_path> --pretrained True --source_dir pretrained/ --source_file model_d.pt  --lr 0.01 --classifer_model Classifier.pth
+```
+
+2. Check trained model *model_best.pt* under <your_job_path>/checkpoint or Download our trained model [here](https://drive.google.com/file/d/1zYn4RTR394rR0LRVlv9QDj-6MHopavnu/view?usp=sharing)
+
+3. Copy *model_best.pt* under hw2/p2/best_model/
+
+### Inference
+
+Doing inference under hw2/p2/inference/
+
+```shell
+bash hw2_p2.sh <generated_test_data_path>
+```
+
+### Visualization
+To visualization the generated digit data. 
+
+```shell
+python3 visualization.py --data_path <your_data_path>/hw2_data/digits/mnistm/train --output_test_data_path <generated_test_data_path> --pretrained True --source_dir best_model/ --source_file model_best.pt 
 
 # Results
 
