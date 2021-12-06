@@ -106,41 +106,66 @@ We consider that it may be the pretrained discriminator has strong discriminatio
 We will try to use discriminator without being pretrained.
 
 
-## Problem 3 ― Unsupervised Domain Adaptation (DANN)
+## Problem 3 ― Unsupervised Domain Adaptation (UDA) - DANN
     cd p3/
-
 
 ### Train & Validation
 
 Training & validating DANN on hw2_data/p2_data/digits/mnistm, svhn, usps
 
-There are three tasks for <SRC>-><TGT> (using source data to predict target data)
+There are three tasks for SRC -> TGT (i.e., using source data to predict target data)
+
+1. svhn -> mnistm
+2. mnistm -> usps
+3. usps -> svhn
+
+There are also three options to choose.
+
+1. src_only: train only on SRC (performance lower bound)
+2. src_tgt: train on both SRC and TGT
+3. tgt_only: train only on TGT (performance upper bound)
+
+The option can be set with *--method* in [options.py](./p3/utils/options.py)
 
 Evaluate by classifier *Classifier.pth* downloaded [here](https://drive.google.com/file/d/1BDeP24VQJZuNdoAEtvxpnJnxpAShLxpt/view?usp=sharing)
 
 1.
 ```shell
-python3 main.py --data_path <your_data_path>/hw2_data/digits/mnistm/train --label_path <your_data_path>/hw2_data/digits/mnistm/train.csv --output_test_data_path <generated_test_data_path> --pretrained True --source_dir pretrained/ --source_file model_d.pt  --lr 0.01 --classifer_model Classifier.pth
+python3 dann_train.py --pretrain False
 ```
+Arguments are set in [options.py](./p3/utils/options.py)
 
-2. Check trained model *model_best.pt* under <your_job_path>/checkpoint or Download our trained model [here](https://drive.google.com/file/d/1zYn4RTR394rR0LRVlv9QDj-6MHopavnu/view?usp=sharing)
+2. Check trained model *model_best.pt* under <your_job_path>/checkpoint or Download our trained model [here](https://drive.google.com/drive/folders/1Tc4ZGCi7Kab6Z_VfsbpUrV-D4bN5ekri?usp=sharing)
 
-3. Copy *model_best.pt* under hw2/p2/best_model/
+3. Copy *dann_xxx.pt* under hw2/p3/best_model/
 
 ### Inference
 
-Doing inference under hw2/p2/inference/
+Doing inference under hw2/p3/inference/
 
 ```shell
-bash hw2_p2.sh <generated_test_data_path>
+bash hw2_p3.sh <target_data_path> <TGT> <output_csv>
 ```
 
 ### Visualization
-To visualization the generated digit data. 
+To visualization the results, we use t-SNE visualization to observe:
+
+1. classification results 
+2. domain discrimination results. 
 
 ```shell
-python3 visualization.py --data_path <your_data_path>/hw2_data/digits/mnistm/train --output_test_data_path <generated_test_data_path> --pretrained True --source_dir best_model/ --source_file model_best.pt 
+python3 dann_tsne.py
+```
+Arguments in [options.py](./p3/utils/options.py) can be modified including the source/target data/label paths.
 
+
+## Problem 3 bonus ― Improved Unsupervised Domain Adaptation (UDA) - DSAN
+    cd p3/
+
+Implementation way is same as Problem 3.
+Only to see the files *dsan_xxx.py* and *hw3_bonus.sh* instead, and to revise the architecture as DSAN in [options.py](./p3/utils/options.py).
+
+    
 # Results
 
 Please refer to the [report](./hw2_d09921014.pdf)
