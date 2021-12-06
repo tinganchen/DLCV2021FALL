@@ -17,104 +17,94 @@ or
 
 # Implementations
 
-## Problem 1 ― Image Classification
+## Problem 1 ― GAN to generate human faces
     cd p1/
 
 ### Pretraining 
 
-Pretraining ResNet-110 on CIFAR-100
+Pretrained weights can be downloaded [here](https://drive.google.com/file/d/1r9fnO0tloxCfYpYcobFV89CXUUGjfuiq/view?usp=sharing)
 
-1. Self-pretrain
-
-```shell
-python3 pretrain.py --job dir <your_job_path> --num_classes 100 --num_epochs 100 --train_batch_size 128 --eval_batch_size 100 --momentum 0.9 --lr 0.05 --lr_decay_step 30 --weight_decay 0.0002 --print_freq 100
-```
-
-2. Check the best model under <your_job_path>/checkpoint
-
-or
-
-1. Download pretrained model [model_best.pt](https://drive.google.com/file/d/1Mtz2hvfDawPHLCtV0xWiTt4zbSlYmJqt/view?usp=sharing) 
-2. Add to hw1/pretrain/resnet110_cifar100/ 
+Copy *model_final.pth* to hw2/p1/pretrained/
 
 ### Train & Validation
 
-Training & validating the (pretrained) ResNet-110 on hw1_data/p1_data
+Training & validating the (pretrained) GAN on hw2_data/p2_data
 
 1.
 ```shell
-python3 main.py --train_dataset <your_data_path>/hw1_data/p1_data/train_50 --test_dataset <your_data_path>/hw1_data/p1_data/val_50 --tsne False --model resnet_110 --job_dir <your_job_path> --output_file <output_csv> --pretrained True --pretrain_dir pretrain/ --pretrain_file resnet110_cifar100/model_best.pt --num_classes 50 --num_epochs 10 --train_batch_size 128 --lr 0.01 --weight_decay 0.0002
+python3 main.py --data_path <your_data_path>/hw2_data/p1_data/face --output_test_data_path <generated_test_data_path> --source_dir pretrained/ --source_file model_final.pth
 ```
 
-2. Check trained model *model_best.pt* under <your_job_path>/checkpoint or Download our trained model [here](https://drive.google.com/file/d/1o16upMUqmz4kbnOwZCEbo5iyjAjjHAVV/view?usp=sharing)
+2. Check trained model *model_best.pt* under <your_job_path>/checkpoint or Download our trained model named *model.pt* [here](https://drive.google.com/file/d/114c2ewuxYtxvvXulRlnbn9YnYfBBJUKx/view?usp=sharing)
 
-3. Copy *model_best.pt* under hw1/p1/best_model/
+3. Copy *model.pt* under hw2/p1/best_model/
 
 ### Inference
 
-Doing inference under hw1/
+Doing inference under hw2/p1/inference
 
 ```shell
-bash hw1_1.sh <test_dataset_dir> <output_csv>
+bash hw2_p1.sh <generated_test_data_path>
 ```
 
-The output csv will be in two columns with column names ["image_id", "label"]
-
-### Evaluation
+### Evaluation & Visualization
 
 ```shell
-python3 evaluate.py -p <output_csv> -g <ground_truth_csv>
+python3 visualization.py --data_path <your_data_path>/hw2_data/p1_data/face --source_dir best_model/ --source_file model.pt --output_test_data_path <generated_test_data_path>
 ```
 
-The ground truth csv should be in the same format as <output_csv>, e.g. hw1_data/p1_data/val_gt.csv
-
-## Problem 2 ― Semantic Segmentation
+## Problem 2 ― ACGAN to generate digit numbers
     cd p2/
 
+### Pretraining
+
+Self-pretain the discriminator
+
+```shell
+python3 pretrain.py --data_path <your_data_path>/hw2_data/digits/mnistm/train --label_path <your_data_path>/hw2_data/digits/mnistm/train.csv --output_test_data_path <generated_test_data_path> --pretrained False --lr 0.01
+```
+
+Check trained model *model_best.pt* under <your_job_path>/checkpoint or Download our trained model named *model_d.pt* [here](https://drive.google.com/file/d/168upVTErMenJDNMicqegM7ChjpZpTDHU/view?usp=sharing)
+
+Copy *model_d.pt* under hw2/p2/pretrained/
+
+
 ### Train & Validation
 
-Training & validating the ResNet-50+FCN (VGG-16+FCN32) on hw1_data/p2_data (pretrained model from *torchvision*)
+Training & validating ACGAN on hw2_data/p2_data/digits/mnistm
+
+Evaluate by classifier *Classifier.pth* downloaded [here](https://drive.google.com/file/d/1BDeP24VQJZuNdoAEtvxpnJnxpAShLxpt/view?usp=sharing)
 
 1.
 ```shell
-python3 main.py --train_dataset <your_data_path>/hw1_data/p2_data/train --test_dataset <your_data_path>/hw1_data/p2_data/validation --model fcn_resnet50 --job_dir <your_job_path> --output_dir result.csv --pretrained True --num_classes 7 --num_epochs 10 --train_batch_size 8 --lr 0.005 --lr_decay_step 5 --weight_decay 0.0002
+python3 main.py --data_path <your_data_path>/hw2_data/digits/mnistm/train --label_path <your_data_path>/hw2_data/digits/mnistm/train.csv --output_test_data_path <generated_test_data_path> --pretrained True --source_dir pretrained/ --source_file model_d.pt  --lr 0.01 --classifer_model Classifier.pth
 ```
-*--model VGG_FCN32* replaced for VGG-16+FCN32
 
-2. Check trained model *model_best.pt* under <your_job_path>/checkpoint or Download our trained model here [(ResNet-50+FCN)](https://drive.google.com/file/d/1Db7VYGiQTcmJ_uP7DWKkMMKUlkcU84ZY/view?usp=sharing) / [(VGG-16+FCN32)](https://drive.google.com/file/d/1w8akHOZvSrMiGntN0pz4D5LN9ajXD4Hp/view?usp=sharing)
+2. Check trained model *model_best.pt* under <your_job_path>/checkpoint or Download our trained model [here](https://drive.google.com/file/d/1zYn4RTR394rR0LRVlv9QDj-6MHopavnu/view?usp=sharing)
 
-3. Copy *model_best.pt* under hw1/p2/best_model/
+3. Copy *model_best.pt* under hw2/p2/best_model/
 
 ### Inference
 
-Doing inference under hw1/
+Doing inference under hw2/p2/inference/
 
 ```shell
-bash hw1_2.sh <test_dataset_dir> <output_segmented_image_dir>
+bash hw2_p2.sh <generated_test_data_path>
 ```
-
-The mIOU can be evaluated during inference time only unmarked the comments in Line 12 and Line 104-108.
-
-Meanwhile, *--ground_truth_dir <your_ground_truth_path>* should be claimed. Otherwise, the default is *None*, and no mIOU will be evaluated.
-
-### mIOU Evaluation
-
-```shell
-python3 mean_iou_evaluate.py -p <output_segmented_image_dir> -g <ground_truth_image_dir>
-```
-
-The evaluation in *mean_iou_evaluate.py* ignores the unknown class (class_id: 6).
-
-The evaluation in hw1/p2/utils/common.py considers all classes.
-
 
 ### Visualization
-To visualization the ground truth or predicted semantic segmentation map in an image, you can run the provided visualization script provided in the starter code by using the following command.
+To visualization the generated digit data. 
 
 ```shell
-python3 viz_mask.py --img_path <xxxx_sat.jpg> --seg_path <xxxx_mask.png>
+python3 visualization.py --data_path <your_data_path>/hw2_data/digits/mnistm/train --output_test_data_path <generated_test_data_path> --pretrained True --source_dir best_model/ --source_file model_best.pt 
 ```
+
+[TODO]
+Our ACGAN can generate digit images that the [classifier](./p2/digit_classifier.py) can discriminate the digits.
+However, the image style is hardly similar to the original data. 
+We consider that it may be the pretrained discriminator has strong discrimination performance.
+We will try to use discriminator without being pretrained.
 
 # Results
 
-Please refer to the [report](./hw1_d09921014.pdf)
+Please refer to the [report](./hw2_d09921014.pdf)
