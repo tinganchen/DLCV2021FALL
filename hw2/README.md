@@ -1,6 +1,8 @@
 # Usage
+    ```
     git clone https://github.com/tinganchen/DLCV2021FALL.git
     cd hw2/
+    ```
 
 # Dataset
     bash ./get_dataset.sh
