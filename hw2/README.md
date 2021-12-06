@@ -1,20 +1,19 @@
 # Usage
     git clone https://github.com/tinganchen/DLCV2021FALL.git
-    cd hw1/
+    cd hw2/
 
 # Dataset
     bash ./get_dataset.sh
 
 or 
-1. Download from the [link](https://drive.google.com/file/d/1LS4V8r1iBjP6OwqpzLLxXUUB7IvSJ-uh/view?usp=sharing) 
-2. Unzip hw1_data.zip as hw1_data/
+1. Download from the [link](https://drive.google.com/file/d/1SEhOw-9lN8Vao5E5MCjJnitQBqKBO53S/view?usp=sharing) 
+2. Unzip hw2_data.zip as hw2_data/
 3. Add to <your_data_path> 
 
 # Requirements
 
     pip3 install -r requirements.txt
 
-Can further *pip3 install imageio==2.9.0* for evaluation in the following implementations
 
 # Implementations
 
