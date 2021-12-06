@@ -67,7 +67,7 @@ python3 visualize.py --test_dataset <img_dir_path>
 datafiles in 104 in *visualize.py* can be modified to examine other image attention.
 
 ## Problem 2 ― Caption Transformer
-    cd p2/
+    cd p2/catr/
 
 ### Pretraining 
 
