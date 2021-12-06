@@ -81,8 +81,9 @@ Doing inference under hw3/
 ```shell
 python3 predict.py --path <image_file_path>
 ```
+```shell
 <image_file_path>: e.g. <your_data_path>/hw3_data/p2_data/images/bike.jpg
-
+```
 
 
 ### Visualization
