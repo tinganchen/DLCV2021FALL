@@ -8,7 +8,8 @@ Deep Learning for Computer Vision
 3. Reconstruction error in MSE
 4. 3-fold cross-validation + KNN for testing
 5. Recognition rate
-6. [Results](./hw0/report.pdf)
+
+[Results](./hw0/report.pdf)
 
 ### [hw1. Image classification & Segmentation](./hw1)
 
@@ -70,3 +71,17 @@ ii. Caption Transformer (CATR)
   6. Visualization: Multi-head attention & Caption words
 
 [Results](./hw3/hw3_d09921014.pdf)
+
+### [hw4. Few-shot learning (FSL) & Self-supervised Learning (SSL)](./hw4)
+
+i. Few-shot learning (FSL) - Prototypical Net
+  1. Image classification
+  2. N-way K-shot sampling
+
+ii. Self-supervised Learning (SSL) - BYOL
+  1. Image classification
+  2. Unsupervised learning
+  3. Data augmentation
+  4. EMA - online & target model
+
+[Results](./hw4/hw4_d09921014.pdf)
