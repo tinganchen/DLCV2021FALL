@@ -62,27 +62,37 @@ python3 eval.py <output_csv> <ground_truth_csv>
 
 ### Pretraining 
 
-Pretrained model and weights refer to the [github](https://github.com/saahiluppal/catr)
+1. Pretrained model (ResNet-50) on mini-ImageNet can be downloaded [here](https://drive.google.com/file/d/19ME6fOwIrE_994hP2x4pdG9BCPKZid3j/view?usp=sharing)
+
+2. Copy *pretrain_model_SL.pt* under hw4/p1/prtrained/
+
+## Training & Validation
+
+```shell
+python3 train_ssl.py 
+```
+
+We also compare with supervised learning (SL)...
+
+```shell
+python3 train_sl.py 
+```
 
 
 ### Inference
 
-Doing inference under hw3/
+Doing inference under hw4/p2/inference
 
 ```shell
-python3 predict.py --path <image_file_path>
+bash hw4_download.sh
 ```
-```shell
-<image_file_path>: e.g. <your_data_path>/hw3_data/p2_data/images/bike.jpg
-```
-
-
-### Visualization
-To visualize the attention map and the caption results under ~/hw3_data/p2_data/images/.
 
 ```shell
-bash hw3_2.sh <your_data_path>/hw3_data/p2_data/images <output_fig_path>
+bash hw4_p2.sh <test_csv> <test_dataset_dir> <output_csv>
 ```
+
+
+
 
 # Results
 
