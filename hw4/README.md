@@ -45,7 +45,7 @@ bash hw4_download.sh
 Doing inference under hw4/p1/inference/
 
 ```shell
-bash hw4_p1.sh <test_csv> <test_dataset_dir> <output_csv>
+bash hw4_p1.sh <test_csv> <test_dataset_dir> <test_case_csv> <output_csv>
 ```
 
 The output csv will be in two columns with same format as hw4/p1/inference/sample.csv
