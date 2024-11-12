@@ -9,13 +9,6 @@ model = torch.hub.load('saahiluppal/catr', 'v3', pretrained=True)  # you can cho
 ```
 ### Samples:
 
-<p align="center">
-  <img src=".github/cake.png" />
-  <img src=".github/girl.png" />
-  <img src=".github/office.png" />
-  <img src=".github/horse.png" />
-  <img src=".github/airplane.png" />
-</p>
 
 All these images has been annotated by CATR.
 
