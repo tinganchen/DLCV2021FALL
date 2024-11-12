@@ -1,0 +1,1 @@
+python3 attn_vis.py --path $1 --fig_path $2
