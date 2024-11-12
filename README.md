@@ -1,5 +1,5 @@
 # DLCV2021FALL
-Deep Learning for Computer Vision
+NTU Course - Deep Learning for Computer Vision
 
 ### [hw0. Face recognition with PCA](./hw0)
 
